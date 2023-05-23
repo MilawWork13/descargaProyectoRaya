@@ -27,7 +27,7 @@
               <input type="text" class="form-control" id="email" name="email" placeholder="Correo electrónico">
             </div>
           </div>
-      </div>
+        </div>
         <div class="row">
           <div class="mb-3 mt-4 row">
             <div class="col-3"></div>

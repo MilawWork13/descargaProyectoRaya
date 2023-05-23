@@ -20,9 +20,9 @@
                 Área de usuario
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="registro/registro.jsp">Registrarse como usuario</a></li>
-                <li><a class="dropdown-item" href="modificar/modificar.jsp">Modificar datos</a></li>
-                <li><a class="dropdown-item" href="borrar/borrar.jsp">Borrar usuario</a></li>
+                <li><a class="dropdown-item" href="userRegistro/registro.jsp">Registrarse como usuario</a></li>
+                <li><a class="dropdown-item" href="userModificar/modificar.jsp">Modificar contraseña</a></li>
+                <li><a class="dropdown-item" href="userDelete/delete.jsp">Borrar usuario</a></li>
               </ul>
             </div>
           </div>
@@ -45,7 +45,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="sieteBusqueda/busqueda.jsp">Buscar partidas de siete y medio</a></li>
                 <li><a class="dropdown-item" href="cuatroRaya/findGames/findGamebyName.jsp">Buscar partidas de cuatro en raya</a></li>
-                <li><a class="dropdown-item" href="ranking/ranking.jsp">Ranking de jugadores</a></li>
+                <li><a class="dropdown-item" href="rankingSystem/ranking.jsp">Ranking de jugadores</a></li>
               </ul>
             </div>
           </div>

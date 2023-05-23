@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <form id="registerData" action="/WebProject/register-game" method="POST">
+    <form id="registerData" action="/WebProject/register-game-siete" method="POST">
       <input type="hidden" name="player1" value="">
       <input type="hidden" name="player2" value="">
       <input type="hidden" name="player3" value="">

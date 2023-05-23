@@ -17,17 +17,19 @@ window.addEventListener(
 
 function fetchData() {
   const nombre = document.querySelector("#nickname").value;
-  const url = "http://localhost:8080/WebProject/findgameby-name?nombre=" + nombre;
+  const url = "http://localhost:8080/WebProject/busqueda-siete?nombre=" + nombre;
   fetch(url, {
     method: "GET"
   })
     .then((response) => {
-      if (response.headers.get("Content-Type").includes("application/json")) {
-        // Handle JSON response
-        return response.json();
+      if (response.status == 500) {
+        window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
       } else {
-        // Handle text response
-        return response.text();
+        if (response.headers.get("Content-Type").includes("application/json")) {
+          return response.json();
+        } else {
+          return response.text();
+        }
       }
     })
     .then((data) => {

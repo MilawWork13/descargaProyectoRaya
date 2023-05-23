@@ -21,19 +21,27 @@ window.addEventListener(
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(userData)
               })
-                .then((response) => response.text())
+                .then((response) => {
+                  if (response.status == 500) {
+                    window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
+                  } else {
+                    return response.text()
+                  }
+                })
                 .then((data) => {
                   if (data == "1") {
                     alert("Ya existe un usuario con ese nombre");
                   } else if (data == "2") {
                     alert("Ya existe un usuario con ese correo");
-                  } else {
+                  } else if (data == "0") {
                     alert("Usuario registrado");
                     window.location.replace("http://localhost:8080/WebProject/index.jsp");
+                  } else if (data == "3") {
+                    window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
                   }
                 })
                 .catch((error) => {
-                  console.error(error);
+                  window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
                 });
             }
         } else {

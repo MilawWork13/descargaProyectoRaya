@@ -1,6 +1,6 @@
 const apuestas = [];
 const nombres = [];
-const ready = [];
+const ready = [0, 0, 0, 0];
 
 const bloqueCon = (i) => {
     // Create div with class "row d-flex justify-content-center"
@@ -239,15 +239,23 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     document.querySelector("#botonComenzar").addEventListener("click", (e) => {
       let comienzo = true;
-      for (let i=0; i<ready.length; i++) {
-        if (ready[i] == 0) {
+      ready.forEach(listo => {
+        if(listo == 0) {
           comienzo = false;
         }
-      }
+      });
       if (comienzo == true) {
         sessionStorage.setItem("apuestas", JSON.stringify(apuestas));
         sessionStorage.setItem("nombres", JSON.stringify(nombres));
-        window.location.replace("http://localhost:8080/WebProject/juego/juego.jsp");
+        fetch("http://localhost:8080/WebProject/siete-sesion", {
+          method: "GET"
+        })
+        .then(response => {
+          window.location.replace("http://localhost:8080/WebProject/sieteJuego/juego.jsp")
+        })
+        .catch(error => {
+          console.log(error);
+        })
       } else {
         alert("Faltan jugadores");
       }
@@ -346,12 +354,18 @@ function eventConfig(i) {
               nickname: name.value,
               password: password.value
           }
-          fetch('http://localhost:8080/WebProject/validate-user', {
+          fetch('http://localhost:8080/WebProject/validate-player', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(dataSend),
               })
-              .then(response => response.text())
+              .then(response => {
+                if (response.status == 500) {
+                  window.location.replace("http://localhost:8080/WebProject/error/error.jsp");
+                } else {
+                  return response.text()
+                }
+              })
               .then(data => {
                   if (data == "1") {
                     nombres[i-1] = name.value;
